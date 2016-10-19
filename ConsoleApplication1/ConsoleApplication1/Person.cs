@@ -84,11 +84,7 @@ public class Person
         }
     }
 
-    public void makeParty()
-    {
-
-
-    }
+    
     public int checkMoney()
     {
         return this.wallet.checkMoney();

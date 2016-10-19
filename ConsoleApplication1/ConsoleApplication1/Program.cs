@@ -43,6 +43,9 @@ namespace ConsoleApplication1
             
            
             Console.WriteLine(place.ToString());
+            place.buy(adam);
+            Console.WriteLine(place.ToString());
+            place.makeParty(4, adam);
            /* Console.WriteLine(adam.ToString());
             adam.eatFood();
             Console.WriteLine(adam.ToString());
