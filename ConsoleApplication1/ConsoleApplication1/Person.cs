@@ -9,6 +9,7 @@ public class Person
     private int age;
     private int health;
     private Boolean alive = true;
+    private int promiles;
     private Wallet wallet;
     private Job job;
     private Place[] places;
@@ -49,13 +50,9 @@ public class Person
         return new Person(name);
     }
 
-    public void eatFood()
+    public void changeHealth(int value)
     {
-        if (this.health >= 100) return;
-        if (this.health >= 80) this.health = 100;
-        else this.health += 20; 
-        Console.WriteLine(this.name + " ate FOOD!");
-
+        this.health += value;
     }
 
     public void eatPoison()

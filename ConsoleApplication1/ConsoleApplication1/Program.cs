@@ -46,22 +46,40 @@ namespace ConsoleApplication1
             place.buy(adam);
             Console.WriteLine(place.ToString());
             place.makeParty(4, adam);
-           /* Console.WriteLine(adam.ToString());
-            adam.eatFood();
-            Console.WriteLine(adam.ToString());
+
+            Food food = new Food();
+            Console.WriteLine( food.ToString());
+            Apple ap = new Apple();
+            Console.WriteLine(ap.ToString());
+            RawMeat raw = new RawMeat();
+
+            BoiledMeat boiled = new BoiledMeat();
+            FriedMeat fried = new FriedMeat();
             adam.eatPoison();
+            Console.WriteLine(adam.ToString());
+            raw.eat(adam);
+            Console.WriteLine(adam.ToString());
+            Console.WriteLine(ap.ToString());
+            ap.eat(adam);
+            ap.eat(adam);
             Console.WriteLine(adam.ToString());
 
-            adam.eatFood();
-            Console.WriteLine(adam.ToString());
-            adam.eatFood();
-            Console.WriteLine(adam.ToString());
-            adam.eatPoison();
-            Console.WriteLine(adam.ToString());
-            adam.eatPoison();
-            Console.WriteLine(adam.ToString());
-            */        
-    
+            /* Console.WriteLine(adam.ToString());
+             adam.eatFood();
+             Console.WriteLine(adam.ToString());
+             adam.eatPoison();
+             Console.WriteLine(adam.ToString());
+
+             adam.eatFood();
+             Console.WriteLine(adam.ToString());
+             adam.eatFood();
+             Console.WriteLine(adam.ToString());
+             adam.eatPoison();
+             Console.WriteLine(adam.ToString());
+             adam.eatPoison();
+             Console.WriteLine(adam.ToString());
+             */
+
             Console.ReadKey(); //WAIT FOR CLOSING
 
             
