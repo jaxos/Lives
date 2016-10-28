@@ -29,6 +29,7 @@ using System.Threading.Tasks;
         this.health = 0;
         this.name = "Eaten";
         this.price = 0;
+        person.checkAlive();
     }
     
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 
     class Job
-    {
+    { //Need to add different jobs and skill required
     private int salary;
     private String role;
     private String companyName;

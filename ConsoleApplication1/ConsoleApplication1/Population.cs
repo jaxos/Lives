@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
     class Population
     {
-      
+      //We'll see if this class will be useful
         
         private Person[] people = null;
         private static int popNumber=0;

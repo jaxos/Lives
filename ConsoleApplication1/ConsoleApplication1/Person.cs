@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Lives;
+using System;
 
 public class Person
 {
@@ -11,6 +12,7 @@ public class Person
     private Boolean alive = true;
     private int promiles;
     private Wallet wallet;
+    private Inventory inventory;
     private Job job;
     private Place[] places;
     private static int idcount;
@@ -30,6 +32,7 @@ public class Person
         this.health = 100;
         this.wallet = new Wallet();
         this.job =  Job.getJob();
+        this.inventory = new Inventory();
 
         if (sexn % 2 == 0)
         {
@@ -64,7 +67,6 @@ public class Person
         {
             this.health = 0;
             this.alive = false;
-            Console.WriteLine("You are dead!");
         }
     }
 
@@ -81,7 +83,12 @@ public class Person
         }
     }
 
-    
+    public void checkAlive()
+    {
+        if (this.health > 0) this.alive = true;
+        else this.alive = false;
+
+    }
     public int checkMoney()
     {
         return this.wallet.checkMoney();
@@ -99,8 +106,16 @@ public class Person
         return "Person id: " + this.id + ", name: " + this.name + ", sex: " + this.sex + "\nage: " + this.age
             + ", health: " + this.health + ", alive: " + this.alive  +
              this.wallet.ToString() +
-             this.job.ToString() + "\n";
+             this.job.ToString() + "\n" +
+             this.inventory.ToString()+"\n";
     }
+
+    public String getInventory()
+    {
+        return this.inventory.ToString();
+    }
+
+    
     public String getName()
     {
         return this.name;

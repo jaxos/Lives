@@ -8,15 +8,20 @@ namespace ConsoleApplication1
 {
     class Program
     {
+        private static Person p = null;
         static void Main(string[] args)
         {
-          //  Logic window = new Logic();
-          //  Logic.hello();
-          //  window.menu();
-           Population x = new Population();
+            //  Logic window = new Logic();
+            //  Logic.hello();
+            //  window.menu();
 
 
-            /*for (int i = 0; i < x.length(); i++)
+            menu();
+        /*
+        Population x = new Population();
+
+
+            for (int i = 0; i < x.length(); i++)
             {
                 String name = "XYZ";
                 x.addPerson(Person.makePerson(name));
@@ -25,7 +30,7 @@ namespace ConsoleApplication1
             
             
             Console.WriteLine("pop.ToString" + x.ToString());
-           */
+           
             
 
             Person adam = Person.makePerson("Adam");
@@ -79,10 +84,92 @@ namespace ConsoleApplication1
              adam.eatPoison();
              Console.WriteLine(adam.ToString());
              */
-
+             
             Console.ReadKey(); //WAIT FOR CLOSING
 
             
+
+        }
+        public static void menu()
+        {
+           
+            
+            
+            int choice = 10000;
+            while (choice != 0)
+            {
+
+                Console.WriteLine("=========================");
+                Console.WriteLine("Your character: \n");
+                if (p != null) { Console.WriteLine(p.ToString()); }
+                else
+                {
+                    Console.WriteLine("No character created at the moment.");
+                }
+                Console.WriteLine("=========================");
+                Console.WriteLine("What do you want to do?");
+                Console.WriteLine("1. Create your person.");
+                Console.WriteLine("2. See the inventory.");
+                Console.WriteLine("3. Check your money.");
+                Console.WriteLine("4.");
+                Console.WriteLine("5.");
+                Console.WriteLine("6.");
+                Console.WriteLine("7. See your family.");
+                Console.WriteLine("8.");
+                Console.WriteLine("9.");
+                Console.WriteLine("0. Exit game :(");
+
+                String Result = Console.ReadLine();
+                int x;
+                while (!Int32.TryParse(Result, out x))
+                {
+                    Console.WriteLine("Not a valid number, try again.");
+
+                    Result = Console.ReadLine();
+                }
+
+                choice = Int32.Parse(Result);
+
+                switch (choice)
+                {
+                    case 1:
+                        
+                        Console.WriteLine("What name should your character have?");
+                        String name = Console.ReadLine();
+                        if (p == null) { p = Person.makePerson(name); }
+                        else
+                        {
+                            Console.WriteLine("Your character is already created. PRESS ENTER TO CONTINUE...");
+                            Console.ReadLine();
+                        }
+
+                            break;
+                    case 2:
+                        if (p == null) { Console.WriteLine("No character created..."); }
+                        else { Console.Clear(); Console.WriteLine(p.getInventory()); }
+                        Console.WriteLine("Press any key...");
+                        Console.ReadLine();
+                        break;
+                    case 3:
+                        if(p==null) { Console.WriteLine("No character created...");}
+                        else { Console.Clear(); Console.WriteLine("Your money: " + p.checkMoney()); }
+                        Console.WriteLine("Press any key...");
+                        Console.ReadLine();
+                        break;
+
+                    case 0:
+                        Environment.Exit(0);
+                        break;
+
+                    default:
+                        Console.WriteLine("choice: " + choice);
+                        break;
+
+                }
+                Console.Clear();
+
+            }
+
 
         }
     }
