@@ -1,6 +1,7 @@
 ﻿using Lives;
 using System;
 
+[Serializable]
 public class Person
 {
     private int id;

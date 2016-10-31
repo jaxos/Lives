@@ -1,6 +1,10 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -115,8 +119,8 @@ namespace ConsoleApplication1
                 Console.WriteLine("5.");
                 Console.WriteLine("6.");
                 Console.WriteLine("7. See your family.");
-                Console.WriteLine("8.");
-                Console.WriteLine("9.");
+                Console.WriteLine("8. Save game.");
+                Console.WriteLine("9. Load game.");
                 Console.WriteLine("0. Exit game :(");
 
                 String Result = Console.ReadLine();
@@ -155,6 +159,53 @@ namespace ConsoleApplication1
                         else { Console.Clear(); Console.WriteLine("Your money: " + p.checkMoney()); }
                         Console.WriteLine("Press any key...");
                         Console.ReadLine();
+                        break;
+
+                    case 4:
+                        break;
+                    case 8:
+                        FileStream fss = new FileStream("DataFile.dat", FileMode.Create);
+                        // Construct a BinaryFormatter and use it to serialize the data to the stream.
+                        BinaryFormatter formatters = new BinaryFormatter();
+                        try
+                        {
+                            if(p!=null)formatters.Serialize(fss, p);
+                        }
+                        catch (SerializationException e)
+                        {
+                            Console.WriteLine("Failed to serialize. Reason: " + e.Message);
+                            throw;
+                        }
+                        finally
+                        {
+                            fss.Close();
+                            Console.WriteLine("Game has been saved");
+                            Console.ReadKey();
+                            Console.Clear();
+                        }
+
+                        break;
+
+                    case 9:
+                        FileStream fso = new FileStream("DataFile.dat", FileMode.Open);
+                        try
+                        {
+                            BinaryFormatter formattero = new BinaryFormatter();
+
+                            // Deserialize the hashtable from the file and 
+                            // assign the reference to the local variable.
+
+                            p = (Person)formattero.Deserialize(fso);
+                        }
+                        catch (SerializationException e)
+                        {
+                            Console.WriteLine("Failed to deserialize. Reason: " + e.Message);
+                            throw;
+                        }
+                        finally
+                        {
+                            fso.Close();
+                        }
                         break;
 
                     case 0:

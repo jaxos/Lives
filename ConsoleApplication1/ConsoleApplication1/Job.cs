@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-
+    
+    
+    [Serializable]
     class Job
     { //Need to add different jobs and skill required
     private int salary;

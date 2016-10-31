@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
+    [Serializable]
     public class Food
     {
     protected int id;
@@ -40,6 +40,8 @@ using System.Threading.Tasks;
 
     public enum foods { Apple, RawMeat, BoiledMeat, FriedMeat, Orange, Broccoli}
 }
+
+[Serializable]
 public class Apple : Food
 {
     public Apple()
@@ -51,6 +53,7 @@ public class Apple : Food
     }
 }
 
+[Serializable]
 public class RawMeat : Food
 {
     public RawMeat()
@@ -63,7 +66,7 @@ public class RawMeat : Food
 }
 
 
-
+[Serializable]
 public class BoiledMeat : Food
 {
     public BoiledMeat(RawMeat r)
@@ -82,7 +85,7 @@ public class BoiledMeat : Food
 }
 
 
-
+[Serializable]
 public class FriedMeat : Food
 {
     public FriedMeat(RawMeat r)

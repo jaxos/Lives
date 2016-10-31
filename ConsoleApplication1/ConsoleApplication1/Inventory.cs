@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lives
 {
+    [Serializable]
     class Inventory
     {
         /* This is an inventory and in every  row there will be objects of different kind
