@@ -115,7 +115,7 @@ namespace ConsoleApplication1
                 Console.WriteLine("1. Create your person.");
                 Console.WriteLine("2. See the inventory.");
                 Console.WriteLine("3. Check your money.");
-                Console.WriteLine("4.");
+                Console.WriteLine("4. Eat.");
                 Console.WriteLine("5.");
                 Console.WriteLine("6.");
                 Console.WriteLine("7. See your family.");
@@ -123,16 +123,22 @@ namespace ConsoleApplication1
                 Console.WriteLine("9. Load game.");
                 Console.WriteLine("0. Exit game :(");
 
-                String Result = Console.ReadLine();
-                int x;
-                while (!Int32.TryParse(Result, out x))
+
+
+                char read = Console.ReadKey(true).KeyChar;
+                choice = read-48;
+                //Console.WriteLine(read + " - this is the key + this is choice - " + choice);
+                
+                while (choice <0 || choice >9) // sprawdzanie czy to jest liczba całkowita
                 {
-                    Console.WriteLine("Not a valid number, try again.");
+                    Console.WriteLine("Type in a valid number");
+                    read = Console.ReadKey(true).KeyChar;
+                    choice = read-48;
 
-                    Result = Console.ReadLine();
                 }
+                
+                //Console.WriteLine("Choice: " + choice);
 
-                choice = Int32.Parse(Result);
 
                 switch (choice)
                 {
@@ -144,7 +150,7 @@ namespace ConsoleApplication1
                         else
                         {
                             Console.WriteLine("Your character is already created. PRESS ENTER TO CONTINUE...");
-                            Console.ReadLine();
+                            Console.ReadKey();
                         }
 
                             break;
@@ -152,38 +158,59 @@ namespace ConsoleApplication1
                         if (p == null) { Console.WriteLine("No character created..."); }
                         else { Console.Clear(); Console.WriteLine(p.getInventory()); }
                         Console.WriteLine("Press any key...");
-                        Console.ReadLine();
+                        Console.ReadKey();
                         break;
                     case 3:
                         if(p==null) { Console.WriteLine("No character created...");}
                         else { Console.Clear(); Console.WriteLine("Your money: " + p.checkMoney()); }
                         Console.WriteLine("Press any key...");
-                        Console.ReadLine();
+                        Console.ReadKey();
                         break;
 
                     case 4:
-                        break;
-                    case 8:
-                        FileStream fss = new FileStream("DataFile.dat", FileMode.Create);
-                        // Construct a BinaryFormatter and use it to serialize the data to the stream.
-                        BinaryFormatter formatters = new BinaryFormatter();
-                        try
+                        int choice2 = 10000;
+                        if (p == null) { Console.WriteLine("No character created..."); }
+                        else { Console.Clear(); Console.WriteLine(p.getInventory()); }
+                        switch (choice2)
                         {
-                            if(p!=null)formatters.Serialize(fss, p);
-                        }
-                        catch (SerializationException e)
-                        {
-                            Console.WriteLine("Failed to serialize. Reason: " + e.Message);
-                            throw;
-                        }
-                        finally
-                        {
-                            fss.Close();
-                            Console.WriteLine("Game has been saved");
-                            Console.ReadKey();
-                            Console.Clear();
+                            case 1:
+                                /*I HAVE NO IDEA WHAT I AM DOING*/
+                                Console.WriteLine("Click enter!");
+                                break;
+                            default:
+                                break;
                         }
 
+                        Console.WriteLine("Press any key...");
+                        Console.ReadKey();
+                        break;
+                        
+                    case 8:
+                        
+                        // Construct a BinaryFormatter and use it to serialize the data to the stream.
+                        BinaryFormatter formatters = new BinaryFormatter();
+                        if (p == null) { Console.WriteLine("You have to create a character to save game!\nClick to continue..."); Console.ReadKey(); ; }
+                        else
+                        {
+                            FileStream fss = new FileStream("DataFile.dat", FileMode.Create);
+                            try
+                            {
+                                if (p != null) formatters.Serialize(fss, p);
+                            }
+                            catch (SerializationException e)
+                            {
+
+                                Console.WriteLine("Failed to serialize. Reason: " + e.Message);
+                                throw;
+                            }
+                            finally
+                            {
+                                fss.Close();
+                                Console.WriteLine("Game has been saved");
+                                Console.ReadKey();
+                                Console.Clear();
+                            }
+                        }
                         break;
 
                     case 9:
@@ -194,7 +221,7 @@ namespace ConsoleApplication1
 
                             // Deserialize the hashtable from the file and 
                             // assign the reference to the local variable.
-
+                            
                             p = (Person)formattero.Deserialize(fso);
                         }
                         catch (SerializationException e)

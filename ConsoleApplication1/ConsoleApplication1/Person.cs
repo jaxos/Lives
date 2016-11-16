@@ -14,6 +14,7 @@ public class Person
     private int promiles;
     private Wallet wallet;
     private Inventory inventory;
+    private Clothes[] clothes;
     private Job job;
     private Place[] places;
     private static int idcount;
@@ -58,6 +59,8 @@ public class Person
     {
         this.health += value;
     }
+
+
 
     public void eatPoison()
     {
@@ -105,10 +108,10 @@ public class Person
     public override string ToString()
     {
         return "Person id: " + this.id + ", name: " + this.name + ", sex: " + this.sex + "\nage: " + this.age
-            + ", health: " + this.health + ", alive: " + this.alive  +
+            + ", health: " + this.health + ", alive: " + this.alive +
              this.wallet.ToString() +
-             this.job.ToString() + "\n" +
-             this.inventory.ToString()+"\n";
+             this.job.ToString() + "\n";
+             //+this.inventory.ToString()+"\n";
     }
 
     public String getInventory()

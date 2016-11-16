@@ -19,17 +19,22 @@ namespace Lives
          * 
          */
 
-
         private Object[,] list = new Object[5,3];
         
         public Inventory()
         {
             list[0,0] = new Apple();
+            list[0, 1] = new RawMeat();
         }
         //
         //
         //
         //
+        public Object getObject(int index)
+        {
+            return list[0,index];
+
+        }
 
         
 

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
     [Serializable]
-    class Place
+    public class Place
     {
     /*place of residence
     has different parameters:
